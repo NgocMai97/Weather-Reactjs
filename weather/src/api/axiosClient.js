@@ -1,11 +1,12 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-    baseURL: 'https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=d7b92a13c253bdd1a0d71bb9fe77985f',
+    baseURL: 'https://api.openweathermap.org/',
     headers: {
         'Content-Type': 'application/json'
     }
 });
+
 // Add a request interceptor
 axiosClient.interceptors.request.use(function (config) {
     // Do something before request is sent

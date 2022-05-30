@@ -1,0 +1,24 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Fredoka', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5rem;
+    text-rendering: optimizeLegibility;
+}
+
+

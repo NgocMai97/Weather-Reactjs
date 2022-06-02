@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-    baseURL: 'https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=d7b92a13c253bdd1a0d71bb9fe77985f',
+    baseURL: 'https://api.openweathermap.org/',
     headers: {
         'Content-Type': 'application/json'
     }
@@ -10,7 +10,7 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(function (config) {
     // Do something before request is sent
     return config;
-    }, function (error) {
+}, function (error) {
     // Do something with request error
     return Promise.reject(error);
 });
@@ -20,7 +20,7 @@ axiosClient.interceptors.response.use(function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
     return response.data;
-    }, function (error) {
+}, function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     return Promise.reject(error);

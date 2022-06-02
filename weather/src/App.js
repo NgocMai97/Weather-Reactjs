@@ -1,7 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import weatherApi from './api/weatherApi';
-import { useEffect } from 'react';
+import { BrowserRouter as Router , Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Week from './pages/Week'
+import Hour from './pages/Hour'
+import MainLayout from './Layouts/Main'
 
 function App() {
   useEffect(() => {
@@ -12,11 +13,15 @@ function App() {
     fetProduct();
   }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+         <Routes>
+            <Route path="/" element={<MainLayout/>} />
+            <Route path="/week" element={<Week/>} />
+            <Route path="/hour" element={<Hour/>} />
+         </Routes>
+      </div>
+    </Router>
   );
 }
 

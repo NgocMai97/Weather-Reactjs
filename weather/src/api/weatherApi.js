@@ -1,4 +1,6 @@
+import axios from "axios";
 import axiosClient from "./axiosClient";
+
 
 const lat = '21.030653'
 const lon = '105.847130'
@@ -22,7 +24,22 @@ const weatherApi = {
     get(id) {
         const url = `/products/${id}/`;
         return axiosClient.get(url);
-    }
+    },
+
+    add(data) {
+        const url = `/products/`;
+        return axiosClient.post(url, data);
+    },
+
+    update(data) {
+        const url = `/products/${data.id}/`;
+        return axiosClient.patch(url, data);
+    },
+
+    remove(id) {
+        const url = `/products/${id}/`;
+        return axiosClient.delete(url);
+    },
 }
 
 export default weatherApi;

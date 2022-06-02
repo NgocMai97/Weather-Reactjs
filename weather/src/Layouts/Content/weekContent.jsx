@@ -1,4 +1,4 @@
-import React , { useState } from 'react'
+import React  from 'react'
 import weatherStatus from '../../Assets/images/weatherStatus.png'
 
 const WeekContent = props => {

@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import React , { useState, useEffect } from 'react'
 import weatherStatus from '../../Assets/images/weatherStatus.png';
 import weatherApi from '../../api/weatherApi';
+=======
+import React  from 'react'
+import weatherStatus from '../../Assets/images/weatherStatus.png'
+>>>>>>> 52191c3afb69518cd55e904c1c25e134a0a75203
 
 const WeekContent = props => {
   const [data,setData] = useState([]);

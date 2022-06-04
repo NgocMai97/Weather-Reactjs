@@ -1,28 +1,29 @@
 import React from 'react'
 import WeatherLogo from '../../Assets/images/weatherLogo.png';
 import weatherRain from '../../Assets/images/weatherRain.png';
+
+import SearchForm from '../Search';
 import '../../Assets/Scss/sidebar.scss';
 const SideBar = props => {
+   
   return (
     <div className='sidebar'>
         <div className="wrap">
-            <form action="" className='mb-3'>
-                <input type="text" placeholder='Search' title="Press city name then Enter" value='' className='search-bar'/>
-            </form>
+            <SearchForm />
             <img src={WeatherLogo} alt="" />
             <div className="fs-2 fw-bold lh-sm text-dack">
-                Ha Noi
+                {props.timezone}
             </div>
             <div className="fs-1 fw-bold">
-                28 C
+                {props.temp} C
             </div>
             <div className="fs-5 lh-lg">
-                Wednesday, 10:20 pm
+                {props.date}
             </div>
             <div className="fs-6 lh-base text-capitalize text-muted mb-3">
-                broken clouds
+                {props.description}
                 <br />
-                Clouds 72
+                {props.desMain}
             </div>
             <div className="weather-image">
                 <img src={weatherRain} alt="" />

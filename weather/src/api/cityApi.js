@@ -2,19 +2,17 @@ import axios from "axios";
 import axiosClient from "./axiosClient";
 
 
-const lat = '21.030653'
-const lon = '105.847130'
+const q = 'danang'
 const units = 'metric'
 const appid = 'd7b92a13c253bdd1a0d71bb9fe77985f'
 
 
-const weatherApi = {
+const cityApi = {
     getAll() {
-        const url = '/data/2.5/onecall';
+        const url = '/data/2.5/weather';
         return axiosClient.get(url, {
             params: {
-                lat,
-                lon,
+                q,
                 units,
                 appid
             }
@@ -42,4 +40,4 @@ const weatherApi = {
     },
 }
 
-export default weatherApi;
+export default cityApi;

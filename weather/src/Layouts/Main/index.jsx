@@ -6,41 +6,35 @@ import WeekContent from '../Content/weekContent';
 import weatherApi from '../../api/weatherApi';
 import { useEffect } from 'react';
 const MainLayout = props => {
+  const [weatherData,setWeatherData] = useState([]);
+  const [currentWeather, setCurrentWeather] = useState({});
     useEffect(() => {
-        const fetProduct = async () => {
-            const weather = await weatherApi.getAll();
-            console.log(weather);
-            setTimeZone(weather.timezone);
-            setTemp(Math.round(weather.current.temp));
-
-            const current = new Date();
-            const date = `${current.getDay()}, ${current.getHours()}:${current.getMinutes()}`;
-            setDate(date);
-
-            setDescription(weather.current.weather[0].description);
-            setDesMain(weather.current.weather[0].main);
-        }
-        fetProduct();
-    }, []);
-    const [timezone, setTimeZone] = useState('');
-    const [temp, setTemp] = useState('');
-    const [date, setDate] = useState('');
-    const [description, setDescription] = useState('');
-    const [desMain, setDesMain] = useState('');
+        const fetchData = async () => {
+          try {
+            const getData = await weatherApi.getAll()
+            .then(
+              (response) => {
+                setWeatherData(response.daily);
+                setCurrentWeather(response.current);
+                console.log(response.current)
+              }
+            )
+          } catch (error) {
+            console.error(error)
+          }
+        };
+       
+      fetchData();
+     
+      }, []);
     return (
         <div className="container">
             <div className="row">
-                <SideBar 
-                    timezone={timezone} 
-                    temp={temp} 
-                    date={date} 
-                    description={description}
-                    desMain={desMain}
-                />
+                <SideBar currentWeather = {currentWeather}/>
                 <div className="main-content">
                     <div className="wrap">
                     <Header/>
-                    <WeekContent/>
+                    <WeekContent weatherData= {weatherData}/>
                     </div>
                 </div>
             </div>

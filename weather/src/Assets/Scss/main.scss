@@ -141,6 +141,10 @@ p {
         width: 100%;
         margin: 3rem 0;
         padding: 0.5rem;
+        display: none;
+        &.active {
+            display: block;
+        }
         .col-detail {
             margin: 0;
             width: 50%;

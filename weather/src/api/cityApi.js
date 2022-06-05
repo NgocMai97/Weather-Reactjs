@@ -19,9 +19,15 @@ const cityApi = {
         });
     },
 
-    get(id) {
-        const url = `/products/${id}/`;
-        return axiosClient.get(url);
+    get(q) {
+        const url = `/data/2.5/weather`;
+        return axiosClient.get(url, {
+            params: {
+                q,
+                units,
+                appid
+            }
+        });
     },
 
     add(data) {

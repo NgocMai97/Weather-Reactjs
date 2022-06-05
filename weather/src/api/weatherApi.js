@@ -21,9 +21,16 @@ const weatherApi = {
         });
     },
 
-    get(id) {
-        const url = `/products/${id}/`;
-        return axiosClient.get(url);
+    get(lat, lon) {
+        const url = `/data/2.5/onecall`;
+        return axiosClient.get(url,  {
+            params: {
+                lat,
+                lon, 
+                units,
+                appid
+            }
+        });
     },
 
     add(data) {

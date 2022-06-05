@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SideBar from '../SideBar';
 import '../../Assets/Scss/main.scss';
 import Header from '../Header';
 import WeekContent from '../Content/weekContent';
 import weatherApi from '../../api/weatherApi';
-import { useEffect } from 'react';
 const MainLayout = props => {
   const [weatherData,setWeatherData] = useState([]);
   const [currentWeather, setCurrentWeather] = useState({});

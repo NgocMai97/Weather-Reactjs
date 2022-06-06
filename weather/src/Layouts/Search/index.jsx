@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import cityApi from "../../api/cityApi";
 import weatherApi from "../../api/weatherApi";
 function SearchForm( props) {
@@ -6,9 +6,11 @@ function SearchForm( props) {
     const [lat, setLat] = useState('');
     const [lon, setLon] = useState('');
     useEffect(() => {
-        console.log('effect cicy')
+        
         const fetProduct = async () => {
+            console.log('effect cicy')
             const city = await cityApi.get(query);
+            console.log(city)
             setLat(city.coord.lat);
             setLon(city.coord.lon);
         }

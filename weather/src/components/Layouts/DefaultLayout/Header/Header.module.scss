@@ -3,18 +3,35 @@
     justify-content: space-between;
     align-items: center;
 
-    ul {
+    .nav {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+   
 
-        li.nav-item {
+        .nav-item {
             cursor: pointer;
             padding-bottom: 5px;
+            font-size: 1.8rem;
+            margin: 10px;
 
             &.active {
                 border-bottom: 2px solid #000;
+
+                a {
+                    opacity: 1;
+                    color: #000;
+                }
+            }
+
+            a {
+                text-decoration: none;
                 color: #000;
+                opacity: .6;
+                transition: color .2s ease;
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
     }
@@ -23,9 +40,11 @@
 .header-avatar {
     width: 50px;
     height: 50px;
+    margin: 0 20px;
 
     img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
     }
 }

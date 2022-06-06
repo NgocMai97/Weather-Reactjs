@@ -1,7 +1,7 @@
 .sidebar {
     width: 25%;
     flex: 0 0 auto;
-    padding: 1.5rem;
+    padding: 2.4rem;
     margin: 0;
     background-color: #fff;
 
@@ -9,7 +9,7 @@
         text-align: left;
 
         .weather {
-            width: 100px;
+            max-width: 100%;
             object-fit: cover;
         }
 
@@ -32,21 +32,26 @@
 
     }
 
-        .weather-image {
-            position: relative;
+    .weather-image {
+        position: relative;
+        width: 100%;
+    
+        img {
+            display: inline-block;
             width: 100%;
-    
-            img {
-                display: inline-block;
-                width: 100%;
-                object-fit: cover;
-            }
-    
-            .weather-address {
-                position: absolute;
-            }
+            object-fit: cover;
         }
+    }
 }
+
+.weather-address {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     line-height: 3rem;
+     font-size: 2.8rem;
+ }
 
 @media (max-width:767px) {
     .sidebar {

@@ -3,6 +3,7 @@
 
 :root {
     --primary: #fff;
+    --container-width: 1320px;
 }
 
 * {
@@ -27,9 +28,10 @@ body {
     margin: 0 auto;
 }
 
-#root {
+.App {
     background-color: #d6d7da;
     padding: 30px 0;
+    height: 100vh;
 }
 
 .fw-bold {
@@ -41,7 +43,7 @@ body {
 }
 
 .lh-lg {
-    line-height: 2;
+    line-height: 3;
 }
 
 .fs-1 {
@@ -53,12 +55,16 @@ body {
 }
 
 .fs-5 {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
 }
 
 .text-muted {
     --bs-text-opacity: 1;
     color: #6c757d;
+}
+
+.text-blur {
+    opacity: .8;
 }
 
 .text-capitalize {
@@ -70,7 +76,7 @@ body {
 }
 
 .fs-6 {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .mb-3 {
@@ -111,6 +117,10 @@ p {
     margin-bottom: 1rem;
 }
 
+ul {
+    list-style: none;
+}
+
 @media (min-width: 1200px) {
     .fs-1 {
         font-size: 2.5rem;
@@ -123,6 +133,16 @@ p {
     .fs-3 {
         font-size: 1.75rem;
     }
+}
+
+.text-medium {
+    font-size: 3rem;
+    line-height: 4.5rem;
+}
+
+.text-big {
+    font-size: 4rem;
+    line-height: 5.2rem;
 }
 
 .nav {

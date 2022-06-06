@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import cityApi from "../../../../api/cityApi";
+import cityApi from "~/api/cityApi";
 import styles from './Search.module.scss'
 import className from 'classnames/bind'
 
@@ -17,8 +17,8 @@ const Search = props => {
     return(
         <div className={cx('search-form')}>
             <form action="" className='mb-3'>
-                <input type="text" placeholder='Search' onChange={(e) => setQuery(e.target.value)}
-                title="Press city name then Enter" value={query} className={cx('search-bar')}/>
+                <input className={cx('search-bar')} type="text" placeholder='Search' onChange={(e) => setQuery(e.target.value)}
+                title="Press city name then Enter" value={query}/>
             </form>
         </div>
     )

@@ -1,5 +1,5 @@
-import React from 'react'
-import avatar from '../../../../Assets/images/avatar.png'
+import { Link } from 'react-router-dom'
+import avatar from '~/Assets/images/avatar.png'
 import styles from './Header.module.scss'
 import className from 'classnames/bind';
 
@@ -9,18 +9,29 @@ function Header() {
 
   const handleNavClick = (e) => {
     let NavItem = e.target;
-    if (document.querySelector('.nav-item.active') !== null) {
-      document.querySelector('.nav-item.active').classList.remove('active');
+
+    let active = document.querySelector(cx('active'))
+    console.log(active);
+
+    if(active) {
+      active.classList.remove(cx('active'))
     }
-    NavItem.classList.add('active');
+   
+    NavItem.classList.add(cx('active'));
   }
   
   return (
     <header className={cx('header-wrap')}>
-        <ul className={cx('nav fs-5 fw-bold m-0')}>
-            <li className={cx('nav-item m-2 text-muted')} onClick={handleNavClick}>Today</li>
-            <li className={cx('nav-item m-2 text-muted')} onClick={handleNavClick}>Week</li>
-            <li className={cx('nav-item m-2 text-muted')} onClick={handleNavClick}>Hour</li>
+      <ul className={cx('nav','fs-5','fw-bold','m-0')}>
+            <li className={cx('nav-item', 'm-2', 'text-muted', 'active')} onClick={handleNavClick}>
+               <Link to="/">Today</Link>
+            </li>
+            <li className={cx('nav-item', 'm-2', 'text-muted')} onClick={handleNavClick}>
+                <Link to="/week">Week</Link>
+            </li>
+            <li className={cx('nav-item', 'm-2', 'text-muted')} onClick={handleNavClick}>
+                <Link to="/hour">Hour</Link>
+            </li>
         </ul>
         <div className={cx('header-avatar')}>
             <img src={avatar} alt="" className={cx('rounded-circle')} />

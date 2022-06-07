@@ -10,6 +10,7 @@ function Home() {
     //     }
     //     fetProduct();
     // }, [])
+    console.log('re-render')
 
     return <h1>Home page</h1>
 }

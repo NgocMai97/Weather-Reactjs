@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom'
 import avatar from '~/Assets/images/avatar.png'
 import styles from './Header.module.scss'
 import className from 'classnames/bind';
+import { useState } from 'react';
 
 const cx = className.bind(styles);
 
 function Header() {
-
   const handleNavClick = (e) => {
+
     let NavItem = e.target;
 
     let active = document.querySelector(cx('active'))

@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, memo } from "react";
 import Chart from 'chart.js/auto'
 import weatherApi from '~/api/weatherApi'
 import styles from './Hour.module.scss'
 import classNames from "classnames/bind";
+
 
 function Hour() {
     let chartHour = null;
@@ -11,23 +12,37 @@ function Hour() {
     var hourArray = [],
         d = new Date(),
         h = d.getHours(),
-
         ampm = h >= 12 ? 'PM' : 'AM';
 
-        for (var i = h; i < 24; i++) {
-            hourArray.push((i%12 + ':' + '00') + ' ' +  ampm);
-        }
+    for (var i = h; i < 24; i++) {
+        hourArray.push((i%12 + ':' + '00') + ' ' +  ampm);
+    }
+
+    const temps = []
+    const feelLike = []
 
     useEffect(() => {
         const fetProduct = async () => {
             const weatherApir = await weatherApi.getAll();
-            console.log('api',weatherApir);
+
+            const hourly = weatherApir.hourly
+
+            hourly.forEach((time, index) => {
+                
+                temps.push(time.temp)
+                feelLike.push(time.feels_like)
+            })
+
+            // console.log('Temps', temps);
+            // console.log('feel like',feelLike);
         }
         fetProduct();
     }, [])
-
+    
     useEffect(() => {
         const ctx = document.getElementById('Canvas').getContext("2d");
+            console.log('Temps', temps);
+            console.log('feel like',feelLike);
 
         const config = {
             type: 'line',
@@ -35,14 +50,14 @@ function Hour() {
                 labels: hourArray,
                 datasets: [{
                     label: 'Temp (°C )',
-                    data: [12, 19, 3, 5, 2, 3,12, 19, 3, 5, 2, 3,12, 19, 3, 5, 2, 3,12, 19, 3, 5, 2, 3],
+                    data: temps,
                     backgroundColor: 'transparent',
                     borderColor: '#3cba9f',
                     borderWidth: 4
                 },
                 {
                     label: 'Feel like (°C )',
-                    data: [6, 14, 5, 5, 3, 2,6, 4, 5, 5, 3, 2,6, 14, 5, 5, 3, 2,6, 14, 5, 5, 3, 2],
+                    data: feelLike,
                     backgroundColor: 'transparent',
                     borderColor: '#8e5ea2',
                     borderWidth: 4
@@ -67,10 +82,9 @@ function Hour() {
                 ,
                 scales: {
                     y: {
-                        beginAtZero: true,
-                          steps: 2,
-                          stepValue: 6,
-                          max: 60 //max value for the chart is 60
+                        beginAtZero: false,
+                        min: 15,
+                        max: 60 //max value for the chart is 60
                     }
                 }
             }
@@ -80,7 +94,6 @@ function Hour() {
             chartHour.destroy();
         }
         chartHour = new Chart(ctx, config);
-    
 }, [])
 
     return (
@@ -92,4 +105,4 @@ function Hour() {
 
 
 
-export default Hour
+export default memo(Hour)

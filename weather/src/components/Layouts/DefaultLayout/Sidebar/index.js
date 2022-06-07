@@ -36,7 +36,7 @@ function Sidebar(props) {
             </div>
             <div className={cx('weather-image')}>
                 <img src={weatherRain} alt="" />
-                <span className='fs-3 fw-bold text-white weather-address'>Ha Noi</span>
+                <span className={cx('fs-3', 'fw-bold', 'text-white', 'weather-address')}>Ha Noi</span>
             </div>
         </div>
     </aside>

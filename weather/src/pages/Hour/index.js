@@ -27,14 +27,11 @@ function Hour() {
 
             const hourly = weatherApir.hourly
 
-            hourly.forEach((time, index) => {
+            hourly.forEach((time) => {
                 
                 temps.push(time.temp)
                 feelLike.push(time.feels_like)
             })
-
-            // console.log('Temps', temps);
-            // console.log('feel like',feelLike);
         }
         fetProduct();
     }, [])

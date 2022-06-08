@@ -1,17 +1,25 @@
 import React from 'react'
+import { useState } from 'react';
 import WeatherLogo from '../../Assets/images/weatherLogo.png';
 import weatherRain from '../../Assets/images/weatherRain.png';
 
 import SearchForm from '../Search';
 import '../../Assets/Scss/sidebar.scss';
-const SideBar = ({currentWeather}) => {
+const SideBar = ({currentWeather,handleKeyDown,cityName}) => {
+
   return (
     <div className='sidebar'>
         <div className="wrap">
-            <SearchForm />
+        <div className="search-form">
+            <form action="" className='mb-3'>
+                <input type="text" placeholder='Search'
+                onKeyDown={handleKeyDown}
+                title="Press city name then Enter" className='search-bar'/>
+            </form>
+        </div>
             {/* <img src={'https://openweathermap.org/img/w/' + currentWeather.weather[0].icon + '.png'} alt="" width="100px" /> */}
             <div className="fs-2 fw-bold lh-sm text-dack">
-                ThaiLan
+                {cityName}
             </div>
             <div className="fs-1 fw-bold">
                 {Math.round(currentWeather.temp)}°C
@@ -25,7 +33,7 @@ const SideBar = ({currentWeather}) => {
             </div>
             <div className="weather-image">
                 <img src={weatherRain} alt="" />
-                <span className='fs-3 fw-bold text-white weather-address'>ThaiLan</span>
+                <span className='fs-3 fw-bold text-white weather-address'>{cityName}</span>
             </div>
         </div>
     </div>

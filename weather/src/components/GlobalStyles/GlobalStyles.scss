@@ -251,3 +251,109 @@ ul {
 
 }
 
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1320px;
+    height: auto;
+    background-color: #fff;
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .main-content {
+        background-color: rgb(246, 246, 248);
+        height: 90vh;
+        padding: 1.5rem;
+        overflow: auto;
+        flex: 0 0 auto;
+        width: 75%;
+    }
+
+    .week-prediction {
+        .week-prediction-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            width: 100%;
+        }
+    }
+
+    .week-prediction-item {
+        flex: 0 0 auto;
+        width: 25%;
+        cursor: pointer;
+        padding: 0.25rem;
+        margin: 0;
+
+        &.active {
+            .week-prediction-content {
+                background-color: #0dcaf0;
+            }
+        }
+
+        .week-prediction-content {
+            border-radius: 0.3rem;
+            padding: 0.5rem;
+            height: 100%;
+
+            p {
+                margin-bottom: 1rem;
+            }
+
+            .day {
+                font-size: 1rem;
+                color: #6c757d;
+                text-align: left;
+            }
+        }
+    }
+
+    .week-prediction-details {
+        margin: 0;
+        width: 100%;
+        margin: 3rem 0;
+        padding: 0.5rem;
+        display: none;
+
+        &.active {
+            display: block;
+        }
+
+        .col-detail {
+            margin: 0;
+            width: 50%;
+            flex: 0 0 auto;
+        }
+    }
+}
+
+@media (max-width:767px) {
+    .container {
+        .row {
+            flex-direction: column;
+        }
+
+        .main-content {
+            width: 100%;
+        }
+
+        .week-prediction-item {
+            width: 50%;
+        }
+    }
+
+}
+
+header ul li a.active {
+     border-bottom: 2px solid #000;
+ }

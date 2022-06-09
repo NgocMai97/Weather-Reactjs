@@ -7,33 +7,32 @@ import { useState } from 'react';
 const cx = className.bind(styles);
 
 function Header() {
+  const pageRoute = [{ path: '/', tab: 'Today'}, { path: '/week', tab: 'Week'}, { path: '/hour', tab: 'Hour'}]
   const handleNavClick = (e) => {
 
     let NavItem = e.target;
 
-    let active = document.querySelector(cx('active'))
-    console.log(active);
-
+    let active = document.querySelector('.active')
     if(active) {
-      active.classList.remove(cx('active'))
+      active.classList.remove('active')
     }
    
-    NavItem.classList.add(cx('active'));
+    NavItem.classList.add('active');
   }
   
   return (
     <header className={cx('header-wrap')}>
       <ul className={cx('nav','fs-5','fw-bold','m-0')}>
-            <li className={cx('nav-item', 'm-2', 'text-muted', 'active')} onClick={handleNavClick}>
-               <Link to="/">Today</Link>
+        {
+          pageRoute.map((item) => {
+            return (
+              <li className={cx('nav-item', 'm-2', 'text-muted')} onClick={handleNavClick}>
+               <Link to={item.path}>{item.tab}</Link>
             </li>
-            <li className={cx('nav-item', 'm-2', 'text-muted')} onClick={handleNavClick}>
-                <Link to="/week">Week</Link>
-            </li>
-            <li className={cx('nav-item', 'm-2', 'text-muted')} onClick={handleNavClick}>
-                <Link to="/hour">Hour</Link>
-            </li>
-        </ul>
+            )
+          })
+        }
+      </ul>
         <div className={cx('header-avatar')}>
             <img src={avatar} alt="" className={cx('rounded-circle')} />
         </div>

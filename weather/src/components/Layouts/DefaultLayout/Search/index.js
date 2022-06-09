@@ -5,7 +5,7 @@ import className from 'classnames/bind'
 
 const cx = className.bind(styles)
 
-const Search = props => {
+const Search = ({handleKeyDown}) => {
     const [query, setQuery] = useState('');
     useEffect(() => {
         const fetProduct = async () => {
@@ -17,7 +17,7 @@ const Search = props => {
     return(
         <div className={cx('search-form')}>
             <form action="" className='mb-3'>
-                <input className={cx('search-bar')} type="text" placeholder='Search' onChange={(e) => setQuery(e.target.value)}
+                <input className={cx('search-bar')} onKeyDown={handleKeyDown} type="text" placeholder='Search' onChange={(e) => setQuery(e.target.value)}
                 title="Press city name then Enter" value={query}/>
             </form>
         </div>
